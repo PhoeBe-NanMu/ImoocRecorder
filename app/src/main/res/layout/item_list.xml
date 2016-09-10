@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_marginTop="5dp"
+    android:layout_height="60dp">
+
+    <TextView
+        android:id="@+id/id_recorder_time"
+        android:layout_centerVertical="true"
+        android:gravity="center_vertical"
+        android:layout_marginRight="3dp"
+        android:text=""
+        android:layout_toLeftOf="@+id/id_recorder_length"
+        android:textColor="#ff777777"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/id_icon"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/icon"
+
+        android:layout_marginRight="5dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp" />
+
+    <FrameLayout
+        android:id="@+id/id_recorder_length"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/id_icon"
+        android:background="@drawable/chatto_bg_focused"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/id_recorder_anim"
+            android:layout_gravity="center_vertical|right"
+            android:background="@drawable/adj"
+            android:layout_width="25dp"
+            android:layout_height="25dp" />
+    </FrameLayout>
+    
+    
+
+</RelativeLayout>

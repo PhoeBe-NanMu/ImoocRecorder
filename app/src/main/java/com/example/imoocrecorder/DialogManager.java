@@ -47,6 +47,8 @@ public class DialogManager {
 
             mIcon.setImageResource(R.drawable.recorder);
             mLabel.setText("手指上划，取消发送");
+            mLabel.setBackgroundResource(R.drawable.label_style);
+
 
         }
     }
@@ -58,6 +60,7 @@ public class DialogManager {
 
             mIcon.setImageResource(R.drawable.cancel);
             mLabel.setText("松开手指，取消发送");
+            mLabel.setBackgroundResource(R.drawable.label_style_cancel);
 
         }
     }

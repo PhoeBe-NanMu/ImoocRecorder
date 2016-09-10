@@ -4,10 +4,13 @@ import android.content.Context;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
+import android.os.Vibrator;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 
 /**
@@ -16,7 +19,7 @@ import android.widget.Button;
 
 public class RecorderButton extends Button implements AudioManager.AudioStateListener {
 
-    private static final int DISTANCE_Y_CANCEL = 50;
+    private static  int DISTANCE_Y_CANCEL = 80;
     private static final int STATE_NORMAL = 1;
     private static final int STATE_RECORDING = 2;
     private static final int STATE_WANT_TO_CANCEL = 3;
@@ -56,7 +59,7 @@ public class RecorderButton extends Button implements AudioManager.AudioStateLis
         }
     };
 
-    public RecorderButton(Context context, AttributeSet attrs) {
+    public RecorderButton(final Context context, AttributeSet attrs) {
         super(context, attrs);
 
 //        String dir = Environment.getExternalStorageState()+"/imooc_recorder_audios";
@@ -74,6 +77,9 @@ public class RecorderButton extends Button implements AudioManager.AudioStateLis
                 //真正显示因该是在audio prepare()之后
 //                mDialogManager.showRecordingDialog();
 //                isRecording = true;
+                Vibrator vibrator = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
+                vibrator.vibrate(new long[]{5,9,5,9,5,9},-1);
+
                 mReady = true;
                 mAudioManager.prepareAudio();
 
@@ -216,7 +222,14 @@ public class RecorderButton extends Button implements AudioManager.AudioStateLis
         if (x<0||x>getWidth()) {
             return true;
         }
-        if (y<-DISTANCE_Y_CANCEL||y>getHeight()+DISTANCE_Y_CANCEL){
+
+
+        WindowManager windowManager = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        windowManager.getDefaultDisplay().getMetrics(displayMetrics);
+        DISTANCE_Y_CANCEL = displayMetrics.heightPixels/5;
+
+        if (y < -DISTANCE_Y_CANCEL || y > getHeight() + DISTANCE_Y_CANCEL ){
             return true;
         }
         return false;

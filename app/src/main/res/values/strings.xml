@@ -2,6 +2,6 @@
     <string name="app_name">ImoocRecorder</string>
     <string name="str_recorder_normal">按住 说话</string>
     <string name="str_recorder_recording">松开 结束</string>
-    <string name="str_recorder_wantCancel">松开手指 结取消发送</string>
+    <string name="str_recorder_wantCancel">松开手指，取消发送</string>
 
 </resources>
